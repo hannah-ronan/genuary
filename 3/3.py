@@ -1,8 +1,8 @@
+#created for https://genuary.art/ prompt #3: Exactly 42 lines of code.
 import pygame
 import math
 import random
 from PIL import Image
-
 pygame.init()
 img_size = (500,500)
 wallpaper_dim = (500, 500)

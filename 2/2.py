@@ -1,4 +1,4 @@
-#created for https://genuary.art/ prompt #1: Layers upon layers upon layers.
+#created for https://genuary.art/ prompt #2: Layers upon layers upon layers.
 
 from perlin_noise import PerlinNoise
 from PIL import Image
