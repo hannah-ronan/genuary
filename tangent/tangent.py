@@ -3,8 +3,8 @@ import time
 import math
 import pygame
 
-x_degrees_p_sec = 0.1
-y_degrees_p_sec = 0.9
+x_degrees_p_sec = 5
+y_degrees_p_sec = 7
 
 x_loc = (250,0)
 y_loc = (250,0)
