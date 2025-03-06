@@ -11,7 +11,7 @@ colors = [(192, 192, 192), (117, 117, 117), (168, 169, 173), (130,130,130)]
 img_size = (500,500)
 scalef = 0.7
 pygame.init()
-screen = pygame.display.set_mode((img_size[0], img_size[1]))
+screen = pygame.display.set_mode(img_size)
 screen.fill((20,20,20))
 
 def rotate_point(origin, point, angle):

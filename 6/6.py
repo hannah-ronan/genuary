@@ -5,7 +5,7 @@ from PIL import Image, ImageColor
 pygame.init()
 img_size = (500,500)
 wallpaper_dim = (2532, 2532)
-screen = pygame.display.set_mode((img_size[0], img_size[1]))
+screen = pygame.display.set_mode(img_size)
 new_pixel_size = 5
 spacing = 1.2
 pallete_f_name = "comfy52.hex" #https://lospec.com/palette-list/comfy52

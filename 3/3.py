@@ -6,7 +6,7 @@ from PIL import Image
 pygame.init()
 img_size = (500,500)
 wallpaper_dim = (500, 500)
-screen = pygame.display.set_mode((img_size[0], img_size[1]))
+screen = pygame.display.set_mode(img_size)
 cmyk = [[0,255,255],[255,0,255],[255,255,0]]
 
 def map_value(val,src,dst):
