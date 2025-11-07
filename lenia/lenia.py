@@ -120,7 +120,7 @@ file_path = "C:/Users/hanna/OneDrive/Documents/Programming_Projects/genuary/leni
 steps = 100
 
 mask_img = Image.open(f"{file_path}masks/radial_gradient.png")
-initial_config_img = Image.open(f"{file_path}initial_configs/small.png")
+initial_config_img = Image.open(f"{file_path}initial_configs/medium.png")
 new_kernel = Kernel(mask_img, initial_config_img)
 
 pygame.init()
