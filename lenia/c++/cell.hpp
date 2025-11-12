@@ -4,11 +4,11 @@
 
 class Cell {
 public:
-    int xCoord;
-    int yCoord;
-    double value;
+    double value = 0;
     double prevValue = 0;
     std::vector<Neighbour> neighbours;
+
+    Cell();
 
     double sumNeighbours();
 };

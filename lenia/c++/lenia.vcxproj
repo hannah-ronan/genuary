@@ -127,15 +127,13 @@
   <ItemGroup>
     <ClCompile Include="cell.cpp" />
     <ClCompile Include="channel.cpp" />
-    <ClCompile Include="kernel.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="neighbour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cell.hpp" />
     <ClInclude Include="channel.hpp" />
-    <ClInclude Include="kernel.hpp" />
     <ClInclude Include="neighbour.hpp" />
-    <ClInclude Include="utils.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

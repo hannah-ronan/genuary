@@ -18,7 +18,7 @@ class Kernel:
 
     def __init__(self, mask_img, initial_config_img):
         print("initiating kernel...")
-        self.kernal_max = 0
+        self.kernel_max = 0
         self.mask = self.process_image(mask_img, True)
         self.initial_config = self.process_image(initial_config_img, False)
 
@@ -32,7 +32,7 @@ class Kernel:
                 p = pixels[idx][0] 
                 p = map_value(p, (0,255), (0,1))
                 if is_mask:
-                    self.kernal_max+= p
+                    self.kernel_max+= p
                 grid[y][x] = p
         return grid
     
@@ -122,6 +122,7 @@ steps = 100
 mask_img = Image.open(f"{file_path}masks/radial_gradient.png")
 initial_config_img = Image.open(f"{file_path}initial_configs/medium.png")
 new_kernel = Kernel(mask_img, initial_config_img)
+print(f"kernel max: {new_kernel.kernel_max}")
 
 pygame.init()
 screen = pygame.display.set_mode(initial_config_img.size)

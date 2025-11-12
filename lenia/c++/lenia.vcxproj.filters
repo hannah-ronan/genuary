@@ -21,9 +21,6 @@
     <ClCompile Include="channel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="kernel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -38,13 +35,7 @@
     <ClInclude Include="channel.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="kernel.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="neighbour.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utils.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
