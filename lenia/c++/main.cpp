@@ -4,10 +4,17 @@
 #include <chrono>
 #include "channel.hpp"
 
-std::string maskFilePath = "C:/Users/hanna/OneDrive/Documents/Programming_Projects/genuary/lenia/masks/radial.png";
+std::string maskFilePath = "C:/Users/hanna/OneDrive/Documents/Programming_Projects/genuary/lenia/masks/radial_gradient.png";
 std::string initialConfigFilePath = "C:/Users/hanna/OneDrive/Documents/Programming_Projects/genuary/lenia/initial_configs/plswork.png";
 std::string outputFolder = "C:/Users/hanna/OneDrive/Documents/Programming_Projects/genuary/lenia/output_frames/";
 int steps = 200;
+
+
+static std::string pad(int number, int width) {
+    std::ostringstream ss;
+    ss << std::setw(width) << std::setfill('0') << number;
+    return ss.str();
+}
 
 int main() {
     cv::Mat maskImg = cv::imread(maskFilePath, cv::IMREAD_GRAYSCALE);
@@ -31,7 +38,7 @@ int main() {
     for (int i = 0; i < steps; i++) {
         channel.step();
         std::ostringstream filename;
-        filename << outputFolder << "frame_" << i << ".png";
+        filename << outputFolder << "frame_" << pad(i,5) << ".png";
         cv::imwrite(filename.str(), initialConfigImg);
         cv::imshow("step", initialConfigImg);
         cv::waitKey(10);
