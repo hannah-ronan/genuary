@@ -39,29 +39,25 @@ void Channel::initCells() {
     std::cout << "\ninitializing cells...";
     int maskMidpoint = ceil(double(mask.cols) / 2);
     //iterate over cells
-    for (int y = 0; y < initialConfig.rows; y++) {
-        for (int x = 0; x < initialConfig.cols; x++) {
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
             //set cell value based on initial config
-            int cellValue = initialConfig.at<uchar>(y, x) / 255;
+            double cellValue = initialConfig.at<uchar>(y, x);
+            cellValue = cellValue / 255; //map to 0-1
             cells[y][x].value = cellValue;
 
             //add cell neighbours
             for (int y_offset = 0; y_offset < mask.rows; y_offset++) {
                 for (int x_offset = 0; x_offset < mask.cols; x_offset++) {
-                    double maskValue = mask.at<uchar>(y_offset, x_offset) / 255;
+                    double maskValue = mask.at<uchar>(y_offset, x_offset);
+                    maskValue = maskValue / 255; //map to 0-1
                     if (maskValue > 0) { //only add the neighbour if weight is non-zero
-                        try {
-                            int neighbour_x = x - maskMidpoint + x_offset;
-                            int neighbour_y = y - maskMidpoint + y_offset;
-                            if (neighbour_y >= 0 && neighbour_x >= 0 && !(neighbour_x == x && neighbour_y == y)) { //don't check any negative indices, or the current cell
-                                bool isProcessedBeforeParent = y_offset < maskMidpoint || (x_offset < maskMidpoint && y_offset < maskMidpoint);
-                                Cell relative_cell = cells[neighbour_y][neighbour_x];
-                                Neighbour new_neighbour = Neighbour(&relative_cell, maskValue, isProcessedBeforeParent);
-                                cells[y][x].neighbours.push_back(new_neighbour);
-                            }
-                        }
-                        catch (const std::runtime_error& e) {
-                            std::cerr << "Runtime error: " << e.what() << std::endl;
+                        int neighbour_x = x - maskMidpoint + x_offset;
+                        int neighbour_y = y - maskMidpoint + y_offset;
+                        if (neighbour_y >= 0 && neighbour_x >= 0 && neighbour_x < width && neighbour_y < height && !(neighbour_x == x && neighbour_y == y)) { //don't check any indices outside the image, or the current cell
+                            bool isProcessedBeforeParent = y_offset < maskMidpoint || (x_offset < maskMidpoint && y_offset < maskMidpoint);
+                            Neighbour new_neighbour = Neighbour(&cells[neighbour_y][neighbour_x], maskValue, isProcessedBeforeParent);
+                            cells[y][x].neighbours.push_back(new_neighbour);
                         }
                     }
                 }
@@ -95,8 +91,6 @@ void Channel::step() {
             initialConfig.at<uchar>(y, x) = color;
         }
     }
-    cv::imshow("step", initialConfig);
-    cv::waitKey(10);
 }
 
 double Channel::clamp(double value, int min_val, int max_val) {

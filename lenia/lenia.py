@@ -71,7 +71,7 @@ class Channel:
 
     def growth_func(self, cell):
         cell_neighbour_sum = cell.sum_neighbours()
-        normalized_sum = cell_neighbour_sum/self.kernel.kernal_max
+        normalized_sum = cell_neighbour_sum/self.kernel.kernel_max
         if abs(normalized_sum - self.growth_center) < self.growth_range:
             x = (normalized_sum - self.growth_center) / self.growth_range
             f = math.exp(-1 / (1 - x**2)) / math.exp(-1)
